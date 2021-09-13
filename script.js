@@ -24,6 +24,8 @@ for (var i = 0; i < 5; i++) {                           // create table rows
     cell.style.textAlign = "center"
     cell.setAttribute("id", "Cell"+ (i+1) + (j+1));     // assign an ID to each cell
     cell.setAttribute("name", "empty")
+    cell.setAttribute("x", (i+1))
+    cell.setAttribute("y", (j+1))
     row.appendChild(cell);                              // append cell to row
   }
   tBody.appendChild(row);                               // append row to table body
@@ -68,106 +70,17 @@ upButton.textContent = "Up";
 body.appendChild(upButton);
 // button function
 upButton.addEventListener("click", function () {
-    if (currentCell == document.getElementById("Cell34")) {                     // ID current cell
-        document.getElementById("Cell24").style.border = "2px solid black";     // ID cell that is being moved to and assign thicker border
-        document.getElementById("Cell34").style.border = "1px solid black";     // normal border for prior cell
-        currentCell = document.getElementById("Cell24");                        // update current cell
+    let adjNum = parseInt(currentCell.getAttribute("x"))
+    console.log(adjNum)
+    let newSpace = adjNum - 1
+    console.log(newSpace)
+
+    if (newSpace > 0) {  
+        document.getElementById("Cell" + newSpace + currentCell.getAttribute("y")).style.border = "2px solid black";     // ID cell that is being moved to and assign thicker border
+        document.getElementById("Cell" + currentCell.getAttribute("x") + currentCell.getAttribute("y")).style.border = "1px solid black";     // normal border for prior cell
+        currentCell = document.getElementById("Cell" + newSpace + currentCell.getAttribute("y"));                        // update current cell
     }
-    else if (currentCell == document.getElementById("Cell24")) {
-        document.getElementById("Cell14").style.border = "2px solid black";
-        document.getElementById("Cell24").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell14");
-    }
-    else if (currentCell == document.getElementById("Cell33")) {
-        document.getElementById("Cell23").style.border = "2px solid black";
-        document.getElementById("Cell33").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell23");
-    }
-    else if (currentCell == document.getElementById("Cell23")) {
-        document.getElementById("Cell13").style.border = "2px solid black";
-        document.getElementById("Cell23").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell13");
-    }
-    else if (currentCell == document.getElementById("Cell32")) {
-        document.getElementById("Cell22").style.border = "2px solid black";
-        document.getElementById("Cell32").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell22");
-    }
-    else if (currentCell == document.getElementById("Cell22")) {
-        document.getElementById("Cell12").style.border = "2px solid black";
-        document.getElementById("Cell22").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell12");
-    }
-    else if (currentCell == document.getElementById("Cell31")) {
-        document.getElementById("Cell21").style.border = "2px solid black";
-        document.getElementById("Cell31").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell21");
-    }
-    else if (currentCell == document.getElementById("Cell21")) {
-        document.getElementById("Cell11").style.border = "2px solid black";
-        document.getElementById("Cell24").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell11");
-    }
-    else if (currentCell == document.getElementById("Cell44")) {
-        document.getElementById("Cell34").style.border = "2px solid black";
-        document.getElementById("Cell44").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell34");
-    }
-    else if (currentCell == document.getElementById("Cell54")) {
-        document.getElementById("Cell44").style.border = "2px solid black";
-        document.getElementById("Cell54").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell44");
-    }
-    else if (currentCell == document.getElementById("Cell43")) {
-        document.getElementById("Cell33").style.border = "2px solid black";
-        document.getElementById("Cell43").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell33");
-    }
-    else if (currentCell == document.getElementById("Cell53")) {
-        document.getElementById("Cell43").style.border = "2px solid black";
-        document.getElementById("Cell53").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell43");
-    }
-    else if (currentCell == document.getElementById("Cell42")) {
-        document.getElementById("Cell32").style.border = "2px solid black";
-        document.getElementById("Cell42").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell32");
-    }
-    else if (currentCell == document.getElementById("Cell52")) {
-        document.getElementById("Cell42").style.border = "2px solid black";
-        document.getElementById("Cell52").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell42");
-    }
-    else if (currentCell == document.getElementById("Cell41")) {
-        document.getElementById("Cell31").style.border = "2px solid black";
-        document.getElementById("Cell41").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell31");
-    }
-    else if (currentCell == document.getElementById("Cell51")) {
-        document.getElementById("Cell41").style.border = "2px solid black";
-        document.getElementById("Cell51").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell41");
-    }
-    else if (currentCell == document.getElementById("Cell25")) {
-        document.getElementById("Cell15").style.border = "2px solid black";
-        document.getElementById("Cell25").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell15");
-    }
-    else if (currentCell == document.getElementById("Cell35")) {
-        document.getElementById("Cell25").style.border = "2px solid black";
-        document.getElementById("Cell35").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell25");
-    }
-    else if (currentCell == document.getElementById("Cell45")) {
-        document.getElementById("Cell35").style.border = "2px solid black";
-        document.getElementById("Cell45").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell35");
-    }
-    else if (currentCell == document.getElementById("Cell55")) {
-        document.getElementById("Cell45").style.border = "2px solid black";
-        document.getElementById("Cell55").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell45");
-    }
+    
 })
 
 // "Down" Button
@@ -178,105 +91,15 @@ downButton.textContent = "Down";
 body.appendChild(downButton);
 // button function
 downButton.addEventListener("click", function () {
-    if (currentCell == document.getElementById("Cell11")) {
-        document.getElementById("Cell21").style.border = "2px solid black";
-        document.getElementById("Cell11").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell21");
-    }
-    else if (currentCell == document.getElementById("Cell21")) {
-        document.getElementById("Cell31").style.border = "2px solid black";
-        document.getElementById("Cell21").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell31");
-    }
-    else if (currentCell == document.getElementById("Cell12")) {
-        document.getElementById("Cell22").style.border = "2px solid black";
-        document.getElementById("Cell12").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell22");
-    }
-    else if (currentCell == document.getElementById("Cell22")) {
-        document.getElementById("Cell32").style.border = "2px solid black";
-        document.getElementById("Cell22").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell32");
-    }
-    else if (currentCell == document.getElementById("Cell13")) {
-        document.getElementById("Cell23").style.border = "2px solid black";
-        document.getElementById("Cell13").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell23");
-    }
-    else if (currentCell == document.getElementById("Cell23")) {
-        document.getElementById("Cell33").style.border = "2px solid black";
-        document.getElementById("Cell23").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell33");
-    }
-    else if (currentCell == document.getElementById("Cell14")) {
-        document.getElementById("Cell24").style.border = "2px solid black";
-        document.getElementById("Cell14").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell24");
-    }
-    else if (currentCell == document.getElementById("Cell24")) {
-        document.getElementById("Cell34").style.border = "2px solid black";
-        document.getElementById("Cell24").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell34");
-    }
-    else if (currentCell == document.getElementById("Cell31")) {
-        document.getElementById("Cell41").style.border = "2px solid black";
-        document.getElementById("Cell31").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell41");
-    }
-    else if (currentCell == document.getElementById("Cell41")) {
-        document.getElementById("Cell51").style.border = "2px solid black";
-        document.getElementById("Cell41").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell51");
-    }
-    else if (currentCell == document.getElementById("Cell32")) {
-        document.getElementById("Cell42").style.border = "2px solid black";
-        document.getElementById("Cell32").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell42");
-    }
-    else if (currentCell == document.getElementById("Cell42")) {
-        document.getElementById("Cell52").style.border = "2px solid black";
-        document.getElementById("Cell42").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell52");
-    }
-    else if (currentCell == document.getElementById("Cell33")) {
-        document.getElementById("Cell43").style.border = "2px solid black";
-        document.getElementById("Cell33").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell43");
-    }
-    else if (currentCell == document.getElementById("Cell43")) {
-        document.getElementById("Cell53").style.border = "2px solid black";
-        document.getElementById("Cell43").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell53");
-    }
-    else if (currentCell == document.getElementById("Cell34")) {
-        document.getElementById("Cell44").style.border = "2px solid black";
-        document.getElementById("Cell34").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell44");
-    }
-    else if (currentCell == document.getElementById("Cell44")) {
-        document.getElementById("Cell54").style.border = "2px solid black";
-        document.getElementById("Cell44").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell54");
-    }
-    else if (currentCell == document.getElementById("Cell15")) {
-        document.getElementById("Cell25").style.border = "2px solid black";
-        document.getElementById("Cell15").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell25");
-    }
-    else if (currentCell == document.getElementById("Cell25")) {
-        document.getElementById("Cell35").style.border = "2px solid black";
-        document.getElementById("Cell25").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell35");
-    }
-    else if (currentCell == document.getElementById("Cell35")) {
-        document.getElementById("Cell45").style.border = "2px solid black";
-        document.getElementById("Cell35").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell45");
-    }
-    else if (currentCell == document.getElementById("Cell45")) {
-        document.getElementById("Cell55").style.border = "2px solid black";
-        document.getElementById("Cell45").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell55");
+    let adjNum = parseInt(currentCell.getAttribute("x"))
+    console.log(adjNum)
+    let newSpace = adjNum + 1
+    console.log(newSpace)
+
+    if (newSpace < 6) {  
+        document.getElementById("Cell" + newSpace + currentCell.getAttribute("y")).style.border = "2px solid black";     // ID cell that is being moved to and assign thicker border
+        document.getElementById("Cell" + currentCell.getAttribute("x") + currentCell.getAttribute("y")).style.border = "1px solid black";     // normal border for prior cell
+        currentCell = document.getElementById("Cell" + newSpace + currentCell.getAttribute("y"));                        // update current cell
     }
 })
 
@@ -288,105 +111,15 @@ leftButton.textContent = "Left";
 body.appendChild(leftButton);
 // button function
 leftButton.addEventListener("click", function () {
-    if (currentCell == document.getElementById("Cell14")) {
-        document.getElementById("Cell13").style.border = "2px solid black";
-        document.getElementById("Cell14").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell13");
-    }
-    else if (currentCell == document.getElementById("Cell13")) {
-        document.getElementById("Cell12").style.border = "2px solid black";
-        document.getElementById("Cell13").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell12");
-    }
-    else if (currentCell == document.getElementById("Cell12")) {
-        document.getElementById("Cell11").style.border = "2px solid black";
-        document.getElementById("Cell12").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell11");
-    }
-    else if (currentCell == document.getElementById("Cell24")) {
-        document.getElementById("Cell23").style.border = "2px solid black";
-        document.getElementById("Cell24").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell23");
-    }
-    else if (currentCell == document.getElementById("Cell23")) {
-        document.getElementById("Cell22").style.border = "2px solid black";
-        document.getElementById("Cell23").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell22");
-    }
-    else if (currentCell == document.getElementById("Cell22")) {
-        document.getElementById("Cell21").style.border = "2px solid black";
-        document.getElementById("Cell22").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell21");
-    }
-    else if (currentCell == document.getElementById("Cell34")) {
-        document.getElementById("Cell33").style.border = "2px solid black";
-        document.getElementById("Cell34").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell33");
-    }
-    else if (currentCell == document.getElementById("Cell33")) {
-        document.getElementById("Cell32").style.border = "2px solid black";
-        document.getElementById("Cell33").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell32");
-    }
-    else if (currentCell == document.getElementById("Cell32")) {
-        document.getElementById("Cell31").style.border = "2px solid black";
-        document.getElementById("Cell32").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell31");
-    }
-    else if (currentCell == document.getElementById("Cell15")) {
-        document.getElementById("Cell14").style.border = "2px solid black";
-        document.getElementById("Cell15").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell14");
-    }
-    else if (currentCell == document.getElementById("Cell25")) {
-        document.getElementById("Cell24").style.border = "2px solid black";
-        document.getElementById("Cell25").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell24");
-    }
-    else if (currentCell == document.getElementById("Cell35")) {
-        document.getElementById("Cell34").style.border = "2px solid black";
-        document.getElementById("Cell35").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell34");
-    }
-    else if (currentCell == document.getElementById("Cell45")) {
-        document.getElementById("Cell44").style.border = "2px solid black";
-        document.getElementById("Cell45").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell44");
-    }
-    else if (currentCell == document.getElementById("Cell44")) {
-        document.getElementById("Cell43").style.border = "2px solid black";
-        document.getElementById("Cell44").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell43");
-    }
-    else if (currentCell == document.getElementById("Cell43")) {
-        document.getElementById("Cell42").style.border = "2px solid black";
-        document.getElementById("Cell43").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell42");
-    }
-    else if (currentCell == document.getElementById("Cell42")) {
-        document.getElementById("Cell41").style.border = "2px solid black";
-        document.getElementById("Cell42").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell41");
-    }
-    else if (currentCell == document.getElementById("Cell55")) {
-        document.getElementById("Cell54").style.border = "2px solid black";
-        document.getElementById("Cell55").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell54");
-    }
-    else if (currentCell == document.getElementById("Cell54")) {
-        document.getElementById("Cell53").style.border = "2px solid black";
-        document.getElementById("Cell54").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell53");
-    }
-    else if (currentCell == document.getElementById("Cell53")) {
-        document.getElementById("Cell52").style.border = "2px solid black";
-        document.getElementById("Cell53").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell52");
-    }
-    else if (currentCell == document.getElementById("Cell52")) {
-        document.getElementById("Cell51").style.border = "2px solid black";
-        document.getElementById("Cell52").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell51");
+    let adjNum = parseInt(currentCell.getAttribute("y"))
+    console.log(adjNum)
+    let newSpace = adjNum - 1
+    console.log(newSpace)
+
+    if (newSpace > 0) {  
+        document.getElementById("Cell" + currentCell.getAttribute("x") + newSpace).style.border = "2px solid black";     // ID cell that is being moved to and assign thicker border
+        document.getElementById("Cell" + currentCell.getAttribute("x") + currentCell.getAttribute("y")).style.border = "1px solid black";     // normal border for prior cell
+        currentCell = document.getElementById("Cell" + currentCell.getAttribute("x") + newSpace);                        // update current cell
     }
 })
 
@@ -398,105 +131,15 @@ rightButton.textContent = "Right";
 body.appendChild(rightButton);
 // button function
 rightButton.addEventListener("click", function () {
-    if (currentCell == document.getElementById("Cell11")) {
-        document.getElementById("Cell12").style.border = "2px solid black";
-        document.getElementById("Cell11").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell12");
-    }
-    else if (currentCell == document.getElementById("Cell12")) {
-        document.getElementById("Cell13").style.border = "2px solid black";
-        document.getElementById("Cell12").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell13");
-    }
-    else if (currentCell == document.getElementById("Cell13")) {
-        document.getElementById("Cell14").style.border = "2px solid black";
-        document.getElementById("Cell13").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell14");
-    }
-    else if (currentCell == document.getElementById("Cell21")) {
-        document.getElementById("Cell22").style.border = "2px solid black";
-        document.getElementById("Cell21").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell22");
-    }
-    else if (currentCell == document.getElementById("Cell22")) {
-        document.getElementById("Cell23").style.border = "2px solid black";
-        document.getElementById("Cell22").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell23");
-    }
-    else if (currentCell == document.getElementById("Cell23")) {
-        document.getElementById("Cell24").style.border = "2px solid black";
-        document.getElementById("Cell23").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell24");
-    }
-    else if (currentCell == document.getElementById("Cell31")) {
-        document.getElementById("Cell32").style.border = "2px solid black";
-        document.getElementById("Cell31").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell32");
-    }
-    else if (currentCell == document.getElementById("Cell32")) {
-        document.getElementById("Cell33").style.border = "2px solid black";
-        document.getElementById("Cell32").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell33");
-    }
-    else if (currentCell == document.getElementById("Cell33")) {
-        document.getElementById("Cell34").style.border = "2px solid black";
-        document.getElementById("Cell33").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell34");
-    }
-    else if (currentCell == document.getElementById("Cell14")) {
-        document.getElementById("Cell15").style.border = "2px solid black";
-        document.getElementById("Cell14").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell15");
-    }
-    else if (currentCell == document.getElementById("Cell24")) {
-        document.getElementById("Cell25").style.border = "2px solid black";
-        document.getElementById("Cell24").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell25");
-    }
-    else if (currentCell == document.getElementById("Cell34")) {
-        document.getElementById("Cell35").style.border = "2px solid black";
-        document.getElementById("Cell34").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell35");
-    }
-    else if (currentCell == document.getElementById("Cell41")) {
-        document.getElementById("Cell42").style.border = "2px solid black";
-        document.getElementById("Cell41").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell42");
-    }
-    else if (currentCell == document.getElementById("Cell42")) {
-        document.getElementById("Cell43").style.border = "2px solid black";
-        document.getElementById("Cell42").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell43");
-    }
-    else if (currentCell == document.getElementById("Cell43")) {
-        document.getElementById("Cell44").style.border = "2px solid black";
-        document.getElementById("Cell43").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell44");
-    }
-    else if (currentCell == document.getElementById("Cell44")) {
-        document.getElementById("Cell45").style.border = "2px solid black";
-        document.getElementById("Cell44").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell45");
-    }
-    else if (currentCell == document.getElementById("Cell51")) {
-        document.getElementById("Cell52").style.border = "2px solid black";
-        document.getElementById("Cell51").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell52");
-    }
-    else if (currentCell == document.getElementById("Cell52")) {
-        document.getElementById("Cell53").style.border = "2px solid black";
-        document.getElementById("Cell52").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell53");
-    }
-    else if (currentCell == document.getElementById("Cell53")) {
-        document.getElementById("Cell54").style.border = "2px solid black";
-        document.getElementById("Cell53").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell54");
-    }
-    else if (currentCell == document.getElementById("Cell54")) {
-        document.getElementById("Cell55").style.border = "2px solid black";
-        document.getElementById("Cell54").style.border = "1px solid black";
-        currentCell = document.getElementById("Cell55");
+    let adjNum = parseInt(currentCell.getAttribute("y"))
+    console.log(adjNum)
+    let newSpace = adjNum + 1
+    console.log(newSpace)
+
+    if (newSpace < 6) {  
+        document.getElementById("Cell" + currentCell.getAttribute("x") + newSpace).style.border = "2px solid black";     // ID cell that is being moved to and assign thicker border
+        document.getElementById("Cell" + currentCell.getAttribute("x") + currentCell.getAttribute("y")).style.border = "1px solid black";     // normal border for prior cell
+        currentCell = document.getElementById("Cell" + currentCell.getAttribute("x") + newSpace);                        // update current cell
     }
 })
 
